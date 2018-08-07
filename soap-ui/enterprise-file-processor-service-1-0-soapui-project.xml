@@ -1,0 +1,321 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:soapui-project id="99a15cc9-9655-4bba-872c-0541b65019b0" activeEnvironment="Default" name="enterprise-file-processor-service-1.0" resourceRoot="" soapui-version="5.4.0" abortOnError="false" runType="SEQUENTIAL" xmlns:con="http://eviware.com/soapui/config"><con:settings/><con:interface xsi:type="con:WsdlInterface" id="30ba1e8d-6f3a-462f-a70d-13371f454b2d" wsaVersion="NONE" name="FinancialActionsProcessorWSServiceSoapBinding" type="wsdl" bindingName="{http://universal-bank/enterprise/services/1.0.0}FinancialActionsProcessorWSServiceSoapBinding" soapVersion="1_1" anonymous="optional" definition="http://localhost:8080/enterprise-file-processor-service-1.0.0-SNAPSHOT/FinancialActionsProcessorWS?wsdl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings/><con:definitionCache type="TEXT" rootPart="http://localhost:8080/enterprise-file-processor-service-1.0.0-SNAPSHOT/FinancialActionsProcessorWS?wsdl"><con:part><con:url>http://localhost:8080/enterprise-file-processor-service-1.0.0-SNAPSHOT/FinancialActionsProcessorWS?wsdl</con:url><con:content><![CDATA[<wsdl:definitions name="FinancialActionsProcessorWSService" targetNamespace="http://universal-bank/enterprise/services/1.0.0" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://universal-bank/enterprise/services/1.0.0" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:ns1="http://schemas.xmlsoap.org/soap/http">
+  <wsdl:types>
+    <xs:schema attributeFormDefault="unqualified" elementFormDefault="unqualified" targetNamespace="http://universal-bank/enterprise/services/1.0.0" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:element name="processFinancialAction" type="tns:processFinancialAction"/>
+      <xs:element name="processFinancialActionResponse" type="tns:processFinancialActionResponse"/>
+      <xs:complexType name="processFinancialAction">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="request" type="tns:financialActionRequestDTO"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="financialActionRequestDTO">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="date" type="xs:dateTime"/>
+          <xs:element minOccurs="0" name="payload" type="xs:string"/>
+          <xs:element minOccurs="0" name="transactionId" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="processFinancialActionResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="return" type="tns:financialActionResponseDTO"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="financialActionResponseDTO">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="transactionId" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="JAXBException" type="tns:JAXBException"/>
+      <xs:complexType name="JAXBException">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="errorCode" type="xs:string"/>
+          <xs:element minOccurs="0" name="message" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+    </xs:schema>
+  </wsdl:types>
+  <wsdl:message name="processFinancialAction">
+    <wsdl:part element="tns:processFinancialAction" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="processFinancialActionResponse">
+    <wsdl:part element="tns:processFinancialActionResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="JAXBException">
+    <wsdl:part element="tns:JAXBException" name="JAXBException"></wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="FinancialActionsProcessorWS">
+    <wsdl:operation name="processFinancialAction">
+      <wsdl:input message="tns:processFinancialAction" name="processFinancialAction"></wsdl:input>
+      <wsdl:output message="tns:processFinancialActionResponse" name="processFinancialActionResponse"></wsdl:output>
+      <wsdl:fault message="tns:JAXBException" name="JAXBException"></wsdl:fault>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="FinancialActionsProcessorWSServiceSoapBinding" type="tns:FinancialActionsProcessorWS">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="processFinancialAction">
+      <soap:operation soapAction="processFinancialAction" style="document"/>
+      <wsdl:input name="processFinancialAction">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="processFinancialActionResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="JAXBException">
+        <soap:fault name="JAXBException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="FinancialActionsProcessorWSService">
+    <wsdl:port binding="tns:FinancialActionsProcessorWSServiceSoapBinding" name="FinancialActionsProcessorWSPort">
+      <soap:address location="http://localhost:8080/enterprise-file-processor-service-1.0.0-SNAPSHOT/FinancialActionsProcessorWS"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>]]></con:content><con:type>http://schemas.xmlsoap.org/wsdl/</con:type></con:part></con:definitionCache><con:endpoints><con:endpoint>http://localhost:8080/enterprise-file-processor-service-1.0.0-SNAPSHOT/FinancialActionsProcessorWS</con:endpoint></con:endpoints><con:operation id="5ac56033-dda9-44d7-a6e3-e609cccd00aa" isOneWay="false" action="processFinancialAction" name="processFinancialAction" bindingOperationName="processFinancialAction" type="Request-Response" outputName="processFinancialActionResponse" inputName="processFinancialAction" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="ce3f463f-789d-4820-bf9e-443a2854aa74" name="Request 1"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:28080/universal-bank-integration-service/FinancialActionsProcessorWS</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ns="http://universal-bank/enterprise/services/1.0.0">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <ns:processFinancialAction>
+         <request>
+            <date>2014-02-03T00:00:00</date>
+            <payload><![CDATA[<CRMBusinessEvent
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://universal-bank/crm/enterprise-model/framework/1.0.0 ../jdeveloper/mywork/xml-modeling/universal-bank/src/main/java/contracts/universal-bank-business-events.xsd"
+	xmlns="http://universal-bank/crm/enterprise-model/framework/1.0.0">
+	
+	<eventHeader>
+		<eventID>1</eventID>
+		<sourceSystem>CRM</sourceSystem>
+		<eventChannel>FINANCIAL-TRANSACTION-CHANNEL</eventChannel>
+		<eventCreationTime>2014-02-03T00:00:00</eventCreationTime>
+	</eventHeader>
+	
+	<businessEventType>PURCHASE</businessEventType>
+	
+	<enterpriseOperationEventObject enterpriseOperationKey="AH01">
+		<branchOfficeInfo>
+			<lineNumber>NMSA854</lineNumber>
+			<name>A B ELECTROLUX	SWEDEN	NMS</name>
+			<assignedLicense>NMSA854</assignedLicense>
+		</branchOfficeInfo>
+		<customerInfo>
+			<fullName>ISMAEL CARDONA RENGIFO</fullName>
+			<id>000012</id>
+			<isACompany>false</isACompany>
+			<contactInfo>
+				<address>calle 150C #234-45G BARRIO NUEVA GRANADA</address>
+				<email>ismael.cardona@gmaikl.com</email>
+				<phoneNumber1>3124323856</phoneNumber1>
+				<phoneNumber2>3125476890</phoneNumber2>
+			</contactInfo>
+		</customerInfo>
+		
+		<financialActionDomainObject externalKey="00000001">
+			<sequenceNumber>1</sequenceNumber>
+			<financialNumber>00001</financialNumber>
+			<description>REGULAR TRANSACTION</description>
+			
+			<financialProduct>
+				<type>SAVING_ACCOUNT</type>
+				<description>NUEVA CUENTA DE AHORROS</description>
+				<serialNumber>0232324</serialNumber>
+				<referenceCost>200000</referenceCost>
+				<enterpriseProductsDomainEvents>
+					
+					<addDomainEvent
+						xmlns="http://universal-bank/crm/enterprise-model/framework/domain-events/1.0.0" />
+					
+					<addChekingAccountDomainEvent
+						xmlns="http://universal-bank/crm/enterprise-model/framework/domain-events/1.0.0">
+						<checkbookReferecenNumber>0000000JFSX-68328300</checkbookReferecenNumber>
+						<accountNumber>2300043430030403</accountNumber>
+						<initialFunds>230000000</initialFunds>
+					</addChekingAccountDomainEvent>
+					
+					<addCardDomainEvent
+						xmlns="http://universal-bank/crm/enterprise-model/framework/domain-events/1.0.0">
+						<accountNumber>2300043430030403</accountNumber>
+						<accountType>SAVING_ACCOUNT</accountType>
+						<cardType>DEBIT</cardType>
+					</addCardDomainEvent>
+					
+				</enterpriseProductsDomainEvents>
+			</financialProduct>
+			
+			<financialService>
+				<type>DOMESTIC_PAYMENT</type>
+				<description>pago en efectivo regular</description>
+				<serviceScheduledInfo>
+					<isScheduled>false</isScheduled>
+				</serviceScheduledInfo>
+				<enterpriseServicesDomainEvents>
+					<addDomainEvent
+						xmlns="http://universal-bank/crm/enterprise-model/framework/domain-events/1.0.0" />
+					
+					<executeDomesticPaymentDomainEvent
+						xmlns="http://universal-bank/crm/enterprise-model/framework/domain-events/1.0.0">
+						<cashValue>980000</cashValue>
+						<clearingHouseCode>088g99rtrt</clearingHouseCode>
+						<targetAccountNumber>YMHK-54144838</targetAccountNumber>
+						<targetAccountType>CHECKING_ACCOUNT</targetAccountType>
+					</executeDomesticPaymentDomainEvent>
+					
+				</enterpriseServicesDomainEvents>
+			</financialService>
+			<taxes>20000</taxes>
+			<operationCost>200000</operationCost>
+			
+			<financialActionDomainEvents>
+				<addCustomerDomainEvent
+					xmlns="http://universal-bank/crm/enterprise-model/framework/domain-events/1.0.0">
+					<isTransferred>true</isTransferred>
+					<agreement>BANCO NACIONAL</agreement>
+				</addCustomerDomainEvent>
+			</financialActionDomainEvents>
+		</financialActionDomainObject>
+		
+		
+		<financialActionDomainObject externalKey="00000002">
+			<sequenceNumber>2</sequenceNumber>
+			<financialNumber>00002</financialNumber>
+			<description>REGULAR TRANSACTION</description>
+			
+			<financialProduct>
+				<type>SAVING_ACCOUNT</type>
+				<description>NUEVA CUENTA DE AHORROS</description>
+				<serialNumber>0232324</serialNumber>
+				<referenceCost>200000</referenceCost>
+				<enterpriseProductsDomainEvents>
+					
+					<addDomainEvent
+						xmlns="http://universal-bank/crm/enterprise-model/framework/domain-events/1.0.0" />
+					
+					<addChekingAccountDomainEvent
+						xmlns="http://universal-bank/crm/enterprise-model/framework/domain-events/1.0.0">
+						<checkbookReferecenNumber>0000000JFSX-68328300</checkbookReferecenNumber>
+						<accountNumber>2300043430030403</accountNumber>
+						<initialFunds>230000000</initialFunds>
+					</addChekingAccountDomainEvent>
+					
+					<addCardDomainEvent
+						xmlns="http://universal-bank/crm/enterprise-model/framework/domain-events/1.0.0">
+						<accountNumber>2300043430030403</accountNumber>
+						<accountType>SAVING_ACCOUNT</accountType>
+						<cardType>DEBIT</cardType>
+					</addCardDomainEvent>
+					
+				</enterpriseProductsDomainEvents>
+			</financialProduct>
+			
+			<financialService>
+				<type>DOMESTIC_PAYMENT</type>
+				<description>pago en efectivo regular</description>
+				<serviceScheduledInfo>
+					<isScheduled>false</isScheduled>
+				</serviceScheduledInfo>
+				<enterpriseServicesDomainEvents>
+					<addDomainEvent
+						xmlns="http://universal-bank/crm/enterprise-model/framework/domain-events/1.0.0" />
+					
+					<executeDomesticPaymentDomainEvent
+						xmlns="http://universal-bank/crm/enterprise-model/framework/domain-events/1.0.0">
+						<cashValue>980000</cashValue>
+						<clearingHouseCode>088g99rtrt</clearingHouseCode>
+						<targetAccountNumber>YMHK-54144838</targetAccountNumber>
+						<targetAccountType>CHECKING_ACCOUNT</targetAccountType>
+					</executeDomesticPaymentDomainEvent>
+					
+				</enterpriseServicesDomainEvents>
+			</financialService>
+			<taxes>20000</taxes>
+			<operationCost>200000</operationCost>
+			
+			<financialActionDomainEvents>
+				<addCustomerDomainEvent
+					xmlns="http://universal-bank/crm/enterprise-model/framework/domain-events/1.0.0">
+					<isTransferred>true</isTransferred>
+					<agreement>BANCO NACIONAL</agreement>
+				</addCustomerDomainEvent>
+			</financialActionDomainEvents>
+		</financialActionDomainObject>
+		
+		
+		
+		<financialActionDomainObject externalKey="00000003">
+			<sequenceNumber>3</sequenceNumber>
+			<financialNumber>00003</financialNumber>
+			<description>REGULAR TRANSACTION</description>
+			
+			<financialProduct>
+				<type>SAVING_ACCOUNT</type>
+				<description>NUEVA CUENTA DE AHORROS</description>
+				<serialNumber>0232324</serialNumber>
+				<referenceCost>200000</referenceCost>
+				<enterpriseProductsDomainEvents>
+					
+					<addDomainEvent
+						xmlns="http://universal-bank/crm/enterprise-model/framework/domain-events/1.0.0" />
+					
+					<addChekingAccountDomainEvent
+						xmlns="http://universal-bank/crm/enterprise-model/framework/domain-events/1.0.0">
+						<checkbookReferecenNumber>0000000JFSX-68328300</checkbookReferecenNumber>
+						<accountNumber>2300043430030403</accountNumber>
+						<initialFunds>230000000</initialFunds>
+					</addChekingAccountDomainEvent>
+					
+					<addSavingAccountDomainEvent
+						xmlns="http://universal-bank/crm/enterprise-model/framework/domain-events/1.0.0">
+						<accountNumber>2300043430030403</accountNumber>
+						<initialFunds>1000000</initialFunds>
+					</addSavingAccountDomainEvent>
+					
+					<addCardDomainEvent
+						xmlns="http://universal-bank/crm/enterprise-model/framework/domain-events/1.0.0">
+						<accountNumber>2300043430030403</accountNumber>
+						<accountType>SAVING_ACCOUNT</accountType>
+						<cardType>DEBIT</cardType>
+					</addCardDomainEvent>
+					
+				</enterpriseProductsDomainEvents>
+			</financialProduct>
+			
+			<financialService>
+				<type>DOMESTIC_PAYMENT</type>
+				<description>pago en efectivo regular</description>
+				<serviceScheduledInfo>
+					<isScheduled>false</isScheduled>
+				</serviceScheduledInfo>
+				<enterpriseServicesDomainEvents>
+					<addDomainEvent
+						xmlns="http://universal-bank/crm/enterprise-model/framework/domain-events/1.0.0" />
+					
+					<executeDomesticPaymentDomainEvent
+						xmlns="http://universal-bank/crm/enterprise-model/framework/domain-events/1.0.0">
+						<cashValue>980000</cashValue>
+						<clearingHouseCode>088g99rtrt</clearingHouseCode>
+						<targetAccountNumber>YMHK-54144838</targetAccountNumber>
+						<targetAccountType>CHECKING_ACCOUNT</targetAccountType>
+					</executeDomesticPaymentDomainEvent>
+					
+				</enterpriseServicesDomainEvents>
+			</financialService>
+			<taxes>20000</taxes>
+			<operationCost>200000</operationCost>
+			
+			<financialActionDomainEvents>
+				<addCustomerDomainEvent
+					xmlns="http://universal-bank/crm/enterprise-model/framework/domain-events/1.0.0">
+					<isTransferred>true</isTransferred>
+					<agreement>BANCO NACIONAL</agreement>
+				</addCustomerDomainEvent>
+			</financialActionDomainEvents>
+		</financialActionDomainObject>
+		
+		
+	</enterpriseOperationEventObject>
+	
+</CRMBusinessEvent>]]]]>><![CDATA[</payload>
+            <transactionId>1</transactionId>
+         </request>
+      </ns:processFinancialAction>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="processFinancialAction"/><con:wsrmConfig version="1.2"/></con:call></con:operation></con:interface><con:properties/><con:wssContainer/><con:oAuth2ProfileContainer/><con:oAuth1ProfileContainer/></con:soapui-project>

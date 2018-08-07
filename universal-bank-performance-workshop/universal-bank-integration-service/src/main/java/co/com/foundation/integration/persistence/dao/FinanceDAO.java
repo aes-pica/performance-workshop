@@ -3,9 +3,11 @@ package co.com.foundation.integration.persistence.dao;
 import java.util.List;
 import java.util.Optional;
 
+import javax.annotation.PostConstruct;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 
@@ -27,20 +29,28 @@ import co.com.foundation.integration.persistence.entity.FinanceMessage;
  * ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ 
  */
 
+
 @Stateless
 public class FinanceDAO {
 
-	@PersistenceContext
 	private EntityManager em;
 
-	public ChannelConfiguration getChannelConfigurationById( final String id ) {
+	@PostConstruct
+	public void init() {
+		EntityManagerFactory emfactory = Persistence.createEntityManagerFactory("finance-pu");
+		em = emfactory.createEntityManager();
+	}
+
+	public ChannelConfiguration getChannelConfigurationById(final String id) {
 		return em.find(ChannelConfiguration.class, id);
 	}
-	
+
 	public void createFinanceMessage(final FinanceMessage message) {
+		em.getTransaction().begin();
 		em.persist(message);
+		em.getTransaction().commit();
 	}
-	
+
 	public Optional<AutorizedCompany> verifyAutorizedCompany(final String officeCode) throws RetryException {
 
 		try {

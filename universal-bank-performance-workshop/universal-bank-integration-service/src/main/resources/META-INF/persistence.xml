@@ -4,10 +4,8 @@
 	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
 
 	<persistence-unit name="finance-pu"
-		transaction-type="JTA">
-
+		transaction-type="RESOURCE_LOCAL">
 		
-		<jta-data-source>java:/universal-bank</jta-data-source>
 		
 		<class>co.com.foundation.integration.persistence.entity.CorporateAccount</class>
 		<class>co.com.foundation.integration.persistence.entity.CorporateCheckbook</class>
